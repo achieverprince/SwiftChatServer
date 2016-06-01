@@ -14,7 +14,8 @@ module.exports = {
       storage: 'test.sqlite',
       define: {
         timestamps: false
-      }
+      },
+      dialect: 'sqlite'
     }
   }
 };

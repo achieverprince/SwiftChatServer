@@ -6,13 +6,14 @@ module.exports = {
 
   // Sequelize connection opions
   sequelize: {
-    uri: 'sqlite://',
+    uri: 'mysql://localhost:3306/sequelize',
     options: {
-      logging: false,
-      storage: 'dev.sqlite',
-      define: {
-        timestamps: false
-      }
+      dbName:'sequelize',
+      username:'sequelize',
+      password:'sequelize@123',
+      host: "192.168.137.66",
+      port: 3306,
+      dialect: 'mysql'
     }
   },
 

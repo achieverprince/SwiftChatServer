@@ -9,7 +9,7 @@ var Thing = sqldb.Thing;
 var User = sqldb.User;
 
 Thing.sync()
-  .then(() => {
+  /*.then(() => {
     return Thing.destroy({ where: {} });
   })
   .then(() => {
@@ -41,10 +41,10 @@ Thing.sync()
       info: 'Easily deploy your app to Heroku or Openshift with the heroku ' +
              'and openshift subgenerators'
     }]);
-  });
+  });*/
 
 User.sync()
-  .then(() => User.destroy({ where: {} }))
+  /*.then(() => User.destroy({ where: {} }))
   .then(() => {
     User.bulkCreate([{
       provider: 'local',
@@ -61,4 +61,4 @@ User.sync()
     .then(() => {
       console.log('finished populating users');
     });
-  });
+  });*/
