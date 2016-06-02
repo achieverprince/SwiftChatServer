@@ -11,6 +11,7 @@
 
 import _ from 'lodash';
 import {Chat} from '../../sqldb';
+import {User} from '../../sqldb';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -62,14 +63,15 @@ function handleError(res, statusCode) {
 export function index(req, res) {
   var currentDate = new Date();
   var twentyMinutesEarlier = new Date(currentDate.getTime() - (20 * 60 * 1000));
+  var result = Chat.findAll();
   return Chat.findAll({
     where: {
       createdAt: {
         $gt:twentyMinutesEarlier
       }
-    }
-  })
-    .then(respondWithResult(res))
+    },
+    include: [{model: User, required: true, attributes: ['name', 'email']}]
+  }).then(respondWithResult(res))
     .catch(handleError(res));
 }
 
@@ -88,8 +90,8 @@ export function show(req, res) {
 // Creates a new Chat in the DB
 export function create(req, res) {
   return Chat.create(req.body)
-    .then(respondWithResult(res, 201))
-    .catch(handleError(res));
+  .then(respondWithResult(res, 201))
+  .catch(handleError(res));
 }
 
 // Updates an existing Chat in the DB

@@ -17,5 +17,6 @@ var db = {
 db.Chat = db.sequelize.import('../api/chat/chat.model');
 db.Thing = db.sequelize.import('../api/thing/thing.model');
 db.User = db.sequelize.import('../api/user/user.model');
-
+db.Chat.belongsTo(db.User);
+db.User.hasMany(db.Chat);
 module.exports = db;

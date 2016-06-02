@@ -1,17 +1,17 @@
-<div class="container" ng-show="$ctrl.chatMode">
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">Chats:</h1>
-      <div id="chatContainer" style="max-height: 400px;overflow-y: scroll;">
+      <div id="chatContainer" style="max-height: 400px;overflow-y: auto;">
       <ul class="chatMessage" class="nav nav-tabs nav-stacked" ng-repeat="chat in $ctrl.chats">
-        <li><a href="#" uib-tooltip=""><b>{{chat.info.length>0?chat.info:'anonymous'}} </b> > {{chat.name}} <span class="pull-right">{{chat.createdAt | date:'medium'}} </span><!--<button type="button" class="close" ng-click="$ctrl.deleteChat(chat)">&times;</button>--></a></li>
+        <li><a href="#" uib-tooltip=""><b>{{chat.User.name}} </b> > {{chat.name}} <span class="pull-right" style="padding-right: 5px;">{{chat.createdAt | date:'medium'}} </span><!--<button type="button" class="close" ng-click="$ctrl.deleteChat(chat)">&times;</button>--></a></li>
       </ul>
       </div>
     </div>
   </div>
 
   <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
+    <label>Please type your message</label>
     <p class="input-group">
       <input type="text" class="form-control" placeholder="your message..." ng-model="$ctrl.newChat">
       <span class="input-group-btn">
@@ -21,15 +21,3 @@
   </form>
 </div>
 
-<div class="container" ng-show="!$ctrl.chatMode">
-
-  <form class="thing-form">
-    <label>Please Enter your name</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="your name..." ng-model="$ctrl.userName">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="$ctrl.enterChatMode()">Enter</button>
-      </span>
-    </p>
-  </form>
-</div>

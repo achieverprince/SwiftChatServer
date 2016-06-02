@@ -26,6 +26,7 @@ for (var e in events) {
 
 function emitEvent(event) {
   return function(doc, options, done) {
+    //console.log(doc);
     ChatEvents.emit(event + ':' + doc._id, doc);
     ChatEvents.emit(event, doc);
     done(null);
